@@ -1,0 +1,146 @@
+/**
+* This code is setup so that if there are any changes made to the order_number range, an email will be sent for management to either approve or deny.
+* Author: Gregory S. Green
+* Deployment Date: November 11, 2022  
+*/
+
+function checkValue(e){
+ //Logs the Sheetthat the event (e)occurred in.
+ Logger.log(SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getName());
+
+// Keeps changes made in sheets other than the production schedule from sending the approval email
+ if (SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getName() != "2022 FLA PROD") {
+ return;
+ }
+ 
+  //logs the values in the named range
+ Logger.log(e.range.rowStart);
+
+ // retrieves the edited cell
+ var eCell= e.range;
+
+ // retrieves the edited column
+ var cCellName = eCell.columnStart;
+ 
+ // retrieves the edited row 
+ var rCellName = eCell.rowStart;
+ 
+  
+ Logger.log(cCellName >= 7 && cCellName <= 20 && rCellName >= 2 && rCellName <= 161);
+
+ if(cCellName >= 6 && cCellName <= 20){
+   eCell.setBackground('#FF0000');
+ }
+
+  //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 11){
+   
+       // send email
+    var recipient = "jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A value in the order number column has changed, please review the Order #'s column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  } 
+ 
+ //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 7){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";         
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A unit Type has changed, please review the UNIT column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  } 
+ 
+  //checks for edits to the range and sends email if any of the cells are edited the order number column.
+  if(cCellName == 8 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A unit color has changed, please review the COLOR column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }
+
+//checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 12 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A notes for unit have changed, please review the notes column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }
+
+  
+ //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 13 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A date entered for a unit has changed, please review the DATE ENTERED column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }
+
+ //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 14 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "An approval has changed, please review the APPRVL column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }  
+
+
+  //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 15 ){
+    // send email
+    var recipient = "jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "An order has had it's adds/upgrades changed, please review the ADDS column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }
+
+ //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 16 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A battery type has changed, please review the BATTERY column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  } 
+
+
+  //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 17 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "An order has had it's seat color changed, please review the SEAT COLOR column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  } 
+
+  //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 18 ){
+    // send email
+    var recipient ="jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A rear facing seat kit has changed, please review the RFSK column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }
+ 
+  //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 19 ){
+    // send email
+    var recipient = "jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "An order's lift has been changed, please review the LIFT column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  } 
+
+  //checks for edits to the range and sends email if any of the cells are edited the order number column
+  if(cCellName == 20 ){
+    // send email
+    var recipient = "jholguin@columbiausa.com, dsingleton@columbiausa.com, jtowne@columbiausa.com, kshoemaker@columbiausa.com,     mwhite@columbiausa.com, srussel@columbiausa.com, slynch@columbiausa.com";
+    var subject = " Production Schedule Change Approval Needed";
+    var body = "A purchase order number has changed, please review the PO column and approve the required changes in row "+rCellName+" . ";
+    MailApp.sendEmail( recipient , subject, body );
+  }
+}
